@@ -1,0 +1,139 @@
+// src/project/enums/tools.enum.ts
+
+export enum ToolCategory {
+  // IDEs e Editores de Código
+  VS_CODE = 'VS Code',
+  JETBRAINS = 'JetBrains (IntelliJ, PyCharm, WebStorm, etc.)',
+  SUBLIME_TEXT = 'Sublime Text',
+  VIM = 'Vim / Neovim',
+
+  // Controle de Versão
+  GIT = 'Git',
+  GITHUB = 'GitHub',
+  GITLAB = 'GitLab',
+  BITBUCKET = 'Bitbucket',
+
+  
+  // Stacks de Desenvolvimento Web
+  // Frontend
+  HTML = 'HTML',
+  CSS = 'CSS',
+  JAVASCRIPT = 'JavaScript',
+  TYPESCRIPT = 'TypeScript',
+  REACT = 'React.js',
+  VUE = 'Vue.js',
+  ANGULAR = 'Angular',
+  SVELTE = 'Svelte',
+  WEBPACK = 'Webpack',
+  VITE = 'Vite',
+  BABEL = 'Babel',
+  TAILWIND_CSS = 'Tailwind CSS',
+  BOOTSTRAP = 'Bootstrap',
+  MATERIAL_UI = 'Material UI',
+  REDUX = 'Redux',
+  ZUSTAND = 'Zustand',
+  RECOIL = 'Recoil',
+
+  // Backend
+  NODE_JS = 'JavaScript (Node.js)',
+  PYTHON_DJANGO = 'Python (Django)',
+  PYTHON_FLASK = 'Python (Flask)',
+  PYTHON_FASTAPI = 'Python (FastAPI)',
+  PHP_LARAVEL = 'PHP (Laravel)',
+  PHP_SYMFONY = 'PHP (Symfony)',
+  JAVA_SPRING_BOOT = 'Java (Spring Boot)',
+  RUBY_RAILS = 'Ruby (Rails)',
+  C_SHARP_ASPNET = 'C# (ASP.NET)',
+  GO = 'Go',
+  RUST = 'Rust',
+  REST = 'REST',
+  GRAPHQL = 'GraphQL',
+  WEBSOCKET = 'WebSocket',
+
+  // Inteligência Artificial & Machine Learning
+  PYTHON = 'Python',
+  NUMPY = 'NumPy',
+  PANDAS = 'Pandas',
+  SCIKIT_LEARN = 'Scikit-Learn',
+  TENSORFLOW = 'TensorFlow',
+  PYTORCH = 'PyTorch',
+  OPENCV = 'OpenCV (Visão Computacional)',
+  TRANSFORMERS = 'Transformers (HuggingFace)',
+  JUPYTER = 'Jupyter',
+  GOOGLE_COLAB = 'Google Colab',
+  WEIGHTS_BIAS = 'Weights & Biases',
+
+  // Banco de Dados
+  SQL_MYSQL = 'MySQL',
+  SQL_POSTGRESQL = 'PostgreSQL',
+  SQL_SQLITE = 'SQLite',
+  SQL_SERVER = 'Microsoft SQL Server',
+  NOSQL_MONGODB = 'MongoDB',
+  NOSQL_REDIS = 'Redis',
+  NOSQL_FIREBASE = 'Firebase Realtime DB / Firestore',
+  NOSQL_CASSANDRA = 'Cassandra',
+  ORM_PRISMA = 'Prisma (TypeScript/Node.js)',
+  ORM_SEQUELIZE = 'Sequelize (Node.js)',
+  ORM_SQLALCHEMY = 'SQLAlchemy (Python)',
+  ORM_HIBERNATE = 'Hibernate (Java)',
+  ORM_ENTITY_FRAMEWORK = 'Entity Framework (C#)',
+
+  // Infraestrutura & DevOps
+  DOCKER = 'Docker',
+  KUBERNETES = 'Kubernetes',
+  CI_CD_GITHUB_ACTIONS = 'GitHub Actions',
+  CI_CD_GITLAB_CI = 'GitLab CI',
+  CI_CD_JENKINS = 'Jenkins',
+  CI_CD_CIRCLECI = 'CircleCI',
+  AWS = 'AWS',
+  GOOGLE_CLOUD = 'Google Cloud',
+  AZURE = 'Azure',
+  VERCEL = 'Vercel',
+  NETLIFY = 'Netlify',
+  ANSIBLE = 'Ansible',
+  TERRAFORM = 'Terraform',
+
+  // Desenvolvimento Mobile
+  SWIFT = 'Swift (iOS)',
+  KOTLIN_ANDROID = 'Kotlin / Java (Android)',
+  FLUTTER = 'Flutter (Dart)',
+  REACT_NATIVE = 'React Native',
+  XAMARIN = 'Xamarin',
+  IONIC = 'Ionic',
+
+  // Desenvolvimento Desktop
+  ELECTRON = 'Electron (JavaScript)',
+  TAURI = 'Tauri (Rust + JS/TS)',
+  DOTNET = '.NET (WPF/WinForms)',
+  QT = 'Qt (C++/Python)',
+  JAVA_FX = 'JavaFX',
+
+  // Testes
+  TEST_JEST = 'Jest (JS)',
+  TEST_MOCHA_CHAI = 'Mocha + Chai',
+  TEST_PYTEST = 'Pytest (Python)',
+  TEST_JUNIT = 'JUnit (Java)',
+  TEST_NUNIT = 'NUnit (C#)',
+  TEST_CYPRESS = 'Cypress',
+  TEST_PLAYWRIGHT = 'Playwright',
+  TEST_SELENIUM = 'Selenium',
+
+  // Segurança & Autenticação
+  JWT = 'JWT (JSON Web Tokens)',
+  OAUTH2 = 'OAuth2 / OpenID Connect',
+  AUTH0 = 'Auth0',
+  FIREBASE_AUTH = 'Firebase Auth',
+  OWASP_TOP_10 = 'OWASP Top 10',
+
+  // Gerenciadores de Pacotes
+  NPM = 'npm',
+  YARN = 'yarn',
+  PNPM = 'pnpm',
+  PIP = 'pip',
+  POETRY = 'poetry',
+  CONDA = 'conda',
+  COMPOSER = 'Composer',
+  CARGO = 'cargo',
+  MAVEN = 'Maven',
+  GRADLE = 'Gradle'
+}
