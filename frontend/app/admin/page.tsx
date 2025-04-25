@@ -1,86 +1,81 @@
-"use client"
+"use client";
 
 import { useEffect, useState } from "react";
-import { getPeojects } from "@/services/project";
+import { getProjects } from "@/services/projects";
 import { Project } from "@/types/project.types";
-import { toast } from "react-toastify";
 import ProjectList from "@/components/projectList";
+import ProjectSidebar from "@/components/projectSidebar";
+import HeaderAdmin from "@/components/admin/headerAdmin";
+import GeneralFooter from "@/components/generalFooter";
 
 export default function AdminPage() {
-    const [projects, setProjects] = useState<Project[]>([]);
-    const [loading, setLoading] = useState(true);
-    const [filterProjects, setFilterProjects] = useState<Project[]>([]);
-    const [searchTerm, setSearchTerm] = useState("");
+  const [projects, setProjects] = useState<Project[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+  const [filterProjects, setFilterProjects] = useState<Project[]>([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
-    useEffect(() => {
-        async function fetchProjects () {
-            try {
-                const data = await getPeojects();
-                setProjects(data);
-                setFilterProjects(data);
-            } catch (error) {
-                console.error("Erro ao buscar pelo projeto:", error);
-            } finally{
-                setLoading(false);
-            };
-        };
-        fetchProjects();
-    }, []);
+  useEffect(() => {
+    async function fetchProjects() {
+      try {
+        const data = await getProjects();
+        setProjects(data);
+        setFilterProjects(data);
+      } catch (error) {
+        setError("Erro ao carregar projetos. Tente novamente.");
+        console.error("Erro ao buscar pelo projeto:", error);
+      } finally {
+        setLoading(false);
+      }
+    }
 
-    useEffect(() => {
-        const delayDebounce = setTimeout(() => {
-            const lowerCaseSearch = searchTerm.toLowerCase();
-            const filtered = projects.filter(
-                (project) =>
-                    project.title.toLowerCase().includes(lowerCaseSearch) ||
-                    project.description.toLowerCase().includes(lowerCaseSearch)
-            );
-            setFilterProjects(filtered);
-        }, 300);
+    fetchProjects();
+  }, []);
 
-        return () => clearTimeout(delayDebounce);
-    }, [searchTerm, projects]);
+  useEffect(() => {
+    const delayDebounce = setTimeout(() => {
+      const lowerCaseSearch = searchTerm.toLowerCase();
+      const filtered = projects.filter(
+        (project) =>
+          project.title.toLowerCase().includes(lowerCaseSearch) ||
+          project.description.toLowerCase().includes(lowerCaseSearch)
+      );
+      setFilterProjects(filtered);
+    }, 300);
 
-    return (
-        <div className="p-4">
-            <header className="bg-gray-200 text-gray-900 h-24 flex">
-                <div className="container mx-auto flex justify-between items-center">
-                    <h1 className="text-2x1 font-bold"> Manage Portfolio Projects </h1>
-                    <div>
-                        <button> New Project </button>
-                    </div>
-                    <div className="mt-4 relative">
-                        <input 
-                            type="text"
-                            placeholder="Search projects ..."
-                            value={searchTerm}
-                            onChange={(e) => setSearchTerm(e.target.value)}
-                            className="w-full sm:w-1/2 p-2 pl-10 rounded-lg text-gray-800 focus:outline-none focus:ring-2 focus:ring-blue-300"
-                        />
-                        <svg
-                            className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-500"
-                            fill="none"
-                            stroke="currentCollor"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                        >
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M21 21l-6-6ms-5a7 7 0 11-14 0 7 7 0 0114 0z" 
-                            />
-                        </svg>
-                    </div>
-                </div>
-            </header>
-            <main className="container mx-auto px-4 py-8">
-                {loading ? (
-                    <div className="text-center py-8"> Loading Projects </div>
-                ) : (
-                    <ProjectList projects={filterProjects} />
-                )}
-            </main>
-        </div>
-    );
-};
+    return () => clearTimeout(delayDebounce);
+  }, [searchTerm, projects]);
+
+  return (
+    <div className="min-h-screen grid grid-cols-1 md:grid-cols-[250px_1fr] grid-rows-[auto_1fr_auto]">
+      {/* Sidebar */}
+      <aside className="bg-gray-200 p-4 md:sticky md:top-0 md:h-screen">
+        <ProjectSidebar />
+      </aside>
+
+      {/* Main Content */}
+      <div className="flex flex-col">
+        {/* Header */}
+        <header className="sticky top-0 z-10 bg-white shadow">
+          <HeaderAdmin
+            searchTerm={searchTerm}
+            onSearchChange={setSearchTerm}
+            onNewProject={() => alert("Navegar para criação de projeto")}
+          />
+        </header>
+
+        {/* Main */}
+        <main className="p-6 flex-1">
+          {loading && <p>Carregando...</p>}
+          {error && <p className="text-red-500">{error}</p>}
+          {!loading && !error && <ProjectList projects={filterProjects} />}
+        </main>
+
+        {/* Footer */}
+        <footer className="bg-gray-100 p-4">
+          <GeneralFooter />
+        </footer>
+      </div>
+    </div>
+  );
+}

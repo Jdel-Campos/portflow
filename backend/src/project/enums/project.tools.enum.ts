@@ -1,21 +1,14 @@
-// src/project/enums/tools.enum.ts
-
 export enum ToolCategory {
-  // IDEs e Editores de Código
   VS_CODE = 'VS Code',
   JETBRAINS = 'JetBrains (IntelliJ, PyCharm, WebStorm, etc.)',
   SUBLIME_TEXT = 'Sublime Text',
   VIM = 'Vim / Neovim',
 
-  // Controle de Versão
   GIT = 'Git',
   GITHUB = 'GitHub',
   GITLAB = 'GitLab',
   BITBUCKET = 'Bitbucket',
 
-  
-  // Stacks de Desenvolvimento Web
-  // Frontend
   HTML = 'HTML',
   CSS = 'CSS',
   JAVASCRIPT = 'JavaScript',
@@ -34,7 +27,6 @@ export enum ToolCategory {
   ZUSTAND = 'Zustand',
   RECOIL = 'Recoil',
 
-  // Backend
   NODE_JS = 'JavaScript (Node.js)',
   PYTHON_DJANGO = 'Python (Django)',
   PYTHON_FLASK = 'Python (Flask)',
@@ -50,7 +42,6 @@ export enum ToolCategory {
   GRAPHQL = 'GraphQL',
   WEBSOCKET = 'WebSocket',
 
-  // Inteligência Artificial & Machine Learning
   PYTHON = 'Python',
   NUMPY = 'NumPy',
   PANDAS = 'Pandas',
@@ -63,7 +54,6 @@ export enum ToolCategory {
   GOOGLE_COLAB = 'Google Colab',
   WEIGHTS_BIAS = 'Weights & Biases',
 
-  // Banco de Dados
   SQL_MYSQL = 'MySQL',
   SQL_POSTGRESQL = 'PostgreSQL',
   SQL_SQLITE = 'SQLite',
@@ -78,7 +68,6 @@ export enum ToolCategory {
   ORM_HIBERNATE = 'Hibernate (Java)',
   ORM_ENTITY_FRAMEWORK = 'Entity Framework (C#)',
 
-  // Infraestrutura & DevOps
   DOCKER = 'Docker',
   KUBERNETES = 'Kubernetes',
   CI_CD_GITHUB_ACTIONS = 'GitHub Actions',
@@ -93,7 +82,6 @@ export enum ToolCategory {
   ANSIBLE = 'Ansible',
   TERRAFORM = 'Terraform',
 
-  // Desenvolvimento Mobile
   SWIFT = 'Swift (iOS)',
   KOTLIN_ANDROID = 'Kotlin / Java (Android)',
   FLUTTER = 'Flutter (Dart)',
@@ -101,14 +89,12 @@ export enum ToolCategory {
   XAMARIN = 'Xamarin',
   IONIC = 'Ionic',
 
-  // Desenvolvimento Desktop
   ELECTRON = 'Electron (JavaScript)',
   TAURI = 'Tauri (Rust + JS/TS)',
   DOTNET = '.NET (WPF/WinForms)',
   QT = 'Qt (C++/Python)',
   JAVA_FX = 'JavaFX',
 
-  // Testes
   TEST_JEST = 'Jest (JS)',
   TEST_MOCHA_CHAI = 'Mocha + Chai',
   TEST_PYTEST = 'Pytest (Python)',
@@ -118,14 +104,12 @@ export enum ToolCategory {
   TEST_PLAYWRIGHT = 'Playwright',
   TEST_SELENIUM = 'Selenium',
 
-  // Segurança & Autenticação
   JWT = 'JWT (JSON Web Tokens)',
   OAUTH2 = 'OAuth2 / OpenID Connect',
   AUTH0 = 'Auth0',
   FIREBASE_AUTH = 'Firebase Auth',
   OWASP_TOP_10 = 'OWASP Top 10',
 
-  // Gerenciadores de Pacotes
   NPM = 'npm',
   YARN = 'yarn',
   PNPM = 'pnpm',
@@ -136,4 +120,4 @@ export enum ToolCategory {
   CARGO = 'cargo',
   MAVEN = 'Maven',
   GRADLE = 'Gradle'
-}
+};

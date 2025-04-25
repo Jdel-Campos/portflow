@@ -9,9 +9,11 @@ export default function ProjectPage() {
                     <p className="mt-2 text-lg"> Explore os projetos que desenvolvi! </p>
                 </div>
             </header>
-            <main className="container mx-auto px-4 py-8">
-                <ProjectList projects={[]} />
+            <main className="flex container mx-auto px-4 py-8 gap-8 items-start">
+                <div className="flex-1">
+                    <ProjectList projects={[]} />
+                </div>
             </main>
         </div>
-    )
-}
+    );
+};

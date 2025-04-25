@@ -3,11 +3,11 @@ export interface Project {
     title: string;
     description: string;
     tags: string[];
-    overview: string;
-    reflections: string[];
-    challenge: string;
-    lineRationale: string;
-    tools: string[];
+    overview?: string;
+    reflections?: string;
+    challenge?: string;
+    lineRationale?: string;
+    tools?: string[];
     links?: {
         github?: string;
         vercel?: string;
@@ -17,5 +17,5 @@ export interface Project {
     images?: string[];
     videos?: string[];
     createdAt: string;
-    updateAt: string;
-}
+    updatedAt: string;
+};
