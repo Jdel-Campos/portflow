@@ -4,9 +4,9 @@ import { useEffect, useState } from "react";
 import { getProjects } from "@/services/projects";
 import { Project } from "@/types/project.types";
 import ProjectList from "@/components/projectList";
-import ProjectSidebar from "@/components/projectSidebar";
 import HeaderAdmin from "@/components/admin/headerAdmin";
 import GeneralFooter from "@/components/generalFooter";
+import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 export default function AdminPage() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -47,35 +47,34 @@ export default function AdminPage() {
   }, [searchTerm, projects]);
 
   return (
-    <div className="min-h-screen grid grid-cols-1 md:grid-cols-[250px_1fr] grid-rows-[auto_1fr_auto]">
-      {/* Sidebar */}
-      <aside className="bg-gray-200 p-4 md:sticky md:top-0 md:h-screen">
-        <ProjectSidebar />
-      </aside>
+    <>
+      <div>
+        <div className="flex flex-col">
+          <header className="sticky top-0 z-10 bg-white shadow">
+            <HeaderAdmin />
+          </header>
 
-      {/* Main Content */}
-      <div className="flex flex-col">
-        {/* Header */}
-        <header className="sticky top-0 z-10 bg-white shadow">
-          <HeaderAdmin
-            searchTerm={searchTerm}
-            onSearchChange={setSearchTerm}
-            onNewProject={() => alert("Navegar para criação de projeto")}
-          />
-        </header>
+          <main className="p-6 flex-1">
+            {loading && <p>Carregando...</p>}
+            {error && (
+              <div className="flex justify-center items-center flex-col min-h-[85vh]">
+                <DotLottieReact
+                  src="https://lottie.host/657f01c8-94c8-413a-9282-a0f38e263bb0/kikUFmWh08.lottie"
+                  loop
+                  autoplay
+                  style={{ width: "70%", height: "70%" }}
+                />
+              </div>
+            )}
+            {!loading && !error && <ProjectList projects={filterProjects} />}
+          </main>
 
-        {/* Main */}
-        <main className="p-6 flex-1">
-          {loading && <p>Carregando...</p>}
-          {error && <p className="text-red-500">{error}</p>}
-          {!loading && !error && <ProjectList projects={filterProjects} />}
-        </main>
-
-        {/* Footer */}
-        <footer className="bg-gray-100 p-4">
-          <GeneralFooter />
-        </footer>
+          {/* Footer */}
+        </div>
       </div>
-    </div>
+      <footer>
+        <GeneralFooter />
+      </footer>
+    </>
   );
 }

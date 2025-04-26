@@ -1,28 +1,26 @@
-"use client";
+import { Pencil, ExternalLink } from "lucide-react";
+import Link from "next/link";
 
-interface HeaderAdminProps {
-  searchTerm: string;
-  onSearchChange: (value: string) => void;
-  onNewProject?: () => void;
-}
-
-export default function HeaderAdmin({ searchTerm, onSearchChange, onNewProject }: HeaderAdminProps) {
+export default function AdminHeader() {
   return (
-    <header className="fixed top-0 left-0 right-0 bg-white border-b shadow z-50 h-16 flex items-center justify-between px-6">
-      <div className="flex items-center gap-4">
-        <button
-          onClick={onNewProject}
-          className="text-sm text-gray-600 hover:underline"
-        >
-          Manage Portfolio Projects
-        </button>
-        <input
-          type="text"
-          placeholder="Search projects ..."
-          value={searchTerm}
-          onChange={(e) => onSearchChange(e.target.value)}
-          className="border rounded px-3 py-1 text-sm w-60"
-        />
+    <header className="fixed top-0 left-0 right-0 h-16 bg-white shadow-sm z-40 border-b flex items-center justify-center">
+      <div className="w-11/12 flex items-center justify-between h-full px-[60px]">
+        {/* Logo */}
+        <div className="text-3xl font-black tracking-widest">
+          PORT<span className="font-normal">FLOW</span>
+        </div>
+
+        {/* Ações */}
+        <div className="flex items-center gap-8 text-gray-600 text-sm font-medium">
+          <Link className="flex items-center gap-2 border-r pr-4 hover:text-blue-600" href={"/admin/create_project"}>
+            <Pencil className="w-4 h-4" />
+            <span>New Project</span>
+          </Link>
+          <div className="flex items-center gap-2 cursor-pointer hover:text-blue-600 transition">
+            <ExternalLink className="w-4 h-4" />
+            <span>View Portfolio</span>
+          </div>
+        </div>
       </div>
     </header>
   );
