@@ -5,7 +5,7 @@ import { getProjects } from "@/services/projects";
 import { Project } from "@/types/project.types";
 import ProjectList from "@/components/projectList";
 import HeaderAdmin from "@/components/admin/headerAdmin";
-import GeneralFooter from "@/components/generalFooter";
+import GeneralFooter from "@/components/footers/generalFooter";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 import Loading from "@/components/loading";
 

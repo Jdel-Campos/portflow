@@ -1,55 +1,49 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import FormTextArea from "@/components/forms/formTextArea";
 import UploadInput from "@/components/forms/uploadInput";
 import UploadMultipleInput from "@/components/forms/uploadMultipleInput";
-import { ChevronDownIcon, PhotoIcon } from "@heroicons/react/24/solid";
+import { ChevronDownIcon } from "@heroicons/react/24/solid";
 import LinkInput from "@/components/forms/linkInput";
 import HeaderForms from "@/components/forms/headerForms";
-import GeneralFooter from "@/components/generalFooter";
+import GeneralFooter from "@/components/footers/generalFooter";
 import { ToolCategory } from "@/constants/enums";
+import { ProjectFormData, InitialProjectFormData } from "@/types/forms.types";
+import {
+  handleFileUploads,
+  validateForm,
+  submitProjectData,
+} from "@/utils/projectFormsFunctions";
 
 export default function CreateProjectPage() {
-  const [categories, setCategories] = useState<string[]>([]);
-  const [toolsList, setToolsList] = useState<string[]>([]);
-  const [formData, setFormData] = useState<{
-    title: string;
-    description: string;
-    tags: string[];
-    overview: string;
-    reflections: string;
-    challenge: string;
-    lineRationale: string;
-    tools: string[];
-    links: {
-      github: string;
-      vercel: string;
-      behance: string;
-      dribbble: string;
-    };
-    coverImage: string;
-    images: string[];
-    videos: string[];
-  }>({
-    title: "",
-    description: "",
-    tags: [],
-    overview: "",
-    reflections: "",
-    challenge: "",
-    lineRationale: "",
-    tools: [],
-    links: {
-      github: "",
-      vercel: "",
-      behance: "",
-      dribbble: "",
-    },
-    coverImage: "",
-    images: [],
-    videos: [],
-  });
+  const [formData, setFormData] = useState<ProjectFormData>(
+    InitialProjectFormData
+  );
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    try {
+      const updateFormData = await handleFileUploads(formData);
+
+      if (!validateForm(updateFormData)) {
+        return;
+      }
+
+      const data = await submitProjectData(updateFormData);
+
+      console.log("Your project has been successfully created!", data);
+
+      setFormData(InitialProjectFormData);
+    } catch (error) {
+      console.log("There was an error creating your project!", error);
+    } finally {
+      setIsSubmitting(false);
+    }
+  }
 
   const handleInputChange = (field: string, value: any) => {
     setFormData((prev) => ({
@@ -81,7 +75,6 @@ export default function CreateProjectPage() {
     <>
       <div className="flex items-center justify-center min-h-screen px-4 pt-32 py-20">
         <HeaderForms />
-        {/* flex items-center justify-center min-h-screen px-4 */}
         <div className="w-full max-w-3xl">
           {/* Header da página */}
           <div className="">
@@ -93,19 +86,16 @@ export default function CreateProjectPage() {
             </p>
           </div>
 
-          {/* Forms página */}
-          <form className="space-y-8 pt-6">
+          <form onSubmit={handleSubmit} className="space-y-8 pt-6">
             <div className="">
               {/* Seção 1: Informações Básicas do projeto */}
               <div className="w-full flex flex-col gap-6 border-b-2 border-dashed  border-gray-900/20 pb-14">
-                {/* Project Name */}
                 <div className="sm:col-span-4">
                   <label
                     htmlFor="title"
                     className="block text-sm font-medium leading-6 text-gray-900"
                   >
-                    {" "}
-                    Project Name{" "}
+                    Project Name
                   </label>
                   <div>
                     <input
@@ -291,9 +281,38 @@ export default function CreateProjectPage() {
             <div className="flex gap-4 items-center pt-6">
               <button
                 type="submit"
-                className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 cursor-pointer"
+                className={`flex items-center justify-center bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 cursor-pointer transition ${
+                  isSubmitting ? "opacity-70 cursor-not-allowed" : ""
+                }`}
+                disabled={isSubmitting}
               >
-                Publish
+                {isSubmitting ? (
+                  <>
+                    <svg
+                      className="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
+                      xmlns="http://www.w3.org/2000/svg"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                    >
+                      <circle
+                        className="opacity-25"
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                      ></circle>
+                      <path
+                        className="opacity-75"
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8v8H4z"
+                      ></path>
+                    </svg>
+                    Creating...
+                  </>
+                ) : (
+                  "Publish"
+                )}
               </button>
             </div>
           </form>

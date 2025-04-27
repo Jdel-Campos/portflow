@@ -1,3 +1,5 @@
+"use client"
+
 import ProjectList from "@/components/projectList";
 
 export default function ProjectPage() {

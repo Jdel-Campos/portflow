@@ -17,8 +17,9 @@ export default function AdminHeader() {
             <span>New Project</span>
           </Link>
           <div className="flex items-center gap-2 cursor-pointer hover:text-blue-600 transition">
-            <ExternalLink className="w-4 h-4" />
-            <span>View Portfolio</span>
+            <Link className="flex items-center gap-2 pr-4 hover:text-blue-600" href={"/portfolio"}>
+              <span>View Portfolio</span>
+            </Link>
           </div>
         </div>
       </div>

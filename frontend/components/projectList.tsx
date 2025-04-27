@@ -1,4 +1,4 @@
-import ProjectCard from "./projectCard";
+import AdminCard from "./cards/adminCard";
 import { Project } from "@/types/project.types";
 import { DotLottieReact } from '@lottiefiles/dotlottie-react';
 
@@ -21,10 +21,12 @@ export default function ProjectList({ projects }: ProjectListProps) {
     };
 
     return (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.map((project) => (
-                <ProjectCard key={project._id} project={project}/>
-            ))}
+        <div className="flex justify-center min-h-[70vh] p-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-screen-xl">
+                {projects.map((project) => (
+                    <AdminCard key={project._id} project={project}/>
+                ))}
+            </div>
         </div>
     );
 };
