@@ -4,5 +4,4 @@ export enum ProjectCategory {
   FULLSTACK = 'full-stack',
   UIUX = 'ui-ux-design',
   BRANDING = 'identidade-visual',
-  Web = "Web",
 }
