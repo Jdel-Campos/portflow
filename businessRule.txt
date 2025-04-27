@@ -1,0 +1,17 @@
+## Rota (URL) Visitantes
+
+/	
+/about	
+/projects	
+/projects/:id	
+/comment	
+
+## Rota (URL)	Admin
+
+/admin/login	                
+/admin	                        
+/admin/projects	                
+/admin/projects/:id/edit	    
+/admin/projects/:id	            
+/admin/comments	                
+/admin/comments/:id	            
