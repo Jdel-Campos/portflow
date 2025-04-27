@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { FetchCategories, FetchTools } from "@/services/enums";
 import FormTextArea from "@/components/forms/formTextArea";
 import UploadInput from "@/components/forms/uploadInput";
 import UploadMultipleInput from "@/components/forms/uploadMultipleInput";
@@ -9,6 +8,7 @@ import { ChevronDownIcon, PhotoIcon } from "@heroicons/react/24/solid";
 import LinkInput from "@/components/forms/linkInput";
 import HeaderForms from "@/components/forms/headerForms";
 import GeneralFooter from "@/components/generalFooter";
+import { ToolCategory } from "@/constants/enums";
 
 export default function CreateProjectPage() {
   const [categories, setCategories] = useState<string[]>([]);
@@ -50,18 +50,6 @@ export default function CreateProjectPage() {
     images: [],
     videos: [],
   });
-
-  useEffect(() => {
-    async function loadEnums() {
-      const [categories, tools] = await Promise.all([
-        FetchCategories(),
-        FetchTools(),
-      ]);
-      setCategories(categories);
-      setToolsList(tools);
-    }
-    loadEnums();
-  }, []);
 
   const handleInputChange = (field: string, value: any) => {
     setFormData((prev) => ({
@@ -223,26 +211,20 @@ export default function CreateProjectPage() {
                 {/* Tools */}
                 <div className="border-b-2 border-dashed border-gray-900/30 pb-14">
                   <h2 className="text-base font-semibold leading-7 text-gray-900">
-                    {" "}
-                    Tools used{" "}
+                    Tools used
                   </h2>
 
-                  <div className="mt-10 grid grid-cols-2 sm:grid-cols-3 gap-x-6 gap-y-6">
-                    {[
-                      "React",
-                      "Next.js",
-                      "Node.js",
-                      "MongoDB",
-                      "TailwindCSS",
-                      "AWS",
-                      "Docker",
-                    ].map((tool) => (
-                      <div key={tool} className="flex items-center gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+                    {Object.values(ToolCategory).map((tool) => (
+                      <div
+                        key={tool}
+                        className="inline-flex items-center space-x-2"
+                      >
                         <input
-                          id={tool}
-                          name="tools"
                           type="checkbox"
                           value={tool}
+                          checked={formData.tools.includes(tool)}
+                          onChange={() => handleToolToggle(tool)}
                           className="h-4 w-4 rounded border-gray-300 text-indigo-600 focus:ring-indigo-600"
                         />
                         <label

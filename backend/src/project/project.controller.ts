@@ -53,4 +53,14 @@ export class ProjectController {
   async remove(@Param('id') id: string) {
     return this.projectService.remove(id);
   }
+
+  @Get('categories')
+  getProjectCategories(): string[] {
+    return Object.values(ProjectCategory);
+  }
+
+  @Get('tools')
+  getProjectTools(): string[] {
+    return Object.values(ToolCategory);
+  }
 }

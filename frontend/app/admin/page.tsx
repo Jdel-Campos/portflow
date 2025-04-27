@@ -7,6 +7,7 @@ import ProjectList from "@/components/projectList";
 import HeaderAdmin from "@/components/admin/headerAdmin";
 import GeneralFooter from "@/components/generalFooter";
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
+import Loading from "@/components/loading";
 
 export default function AdminPage() {
   const [projects, setProjects] = useState<Project[]>([]);
@@ -22,10 +23,12 @@ export default function AdminPage() {
         setProjects(data);
         setFilterProjects(data);
       } catch (error) {
-        setError("Erro ao carregar projetos. Tente novamente.");
-        console.error("Erro ao buscar pelo projeto:", error);
+        setError("Error loading projects. Please try again.");
+        console.error("Error when searching for the project:", error);
       } finally {
-        setLoading(false);
+        setTimeout(() => {
+          setLoading(false);
+        }, 3000);
       }
     }
 
@@ -47,34 +50,35 @@ export default function AdminPage() {
   }, [searchTerm, projects]);
 
   return (
-    <>
-      <div>
-        <div className="flex flex-col">
-          <header className="sticky top-0 z-10 bg-white shadow">
-            <HeaderAdmin />
-          </header>
+    <div className="flex flex-col min-h-screen">
+      <header className="sticky top-0 z-10 bg-white shadow">
+        <HeaderAdmin />
+      </header>
 
-          <main className="p-6 flex-1">
-            {loading && <p>Carregando...</p>}
-            {error && (
-              <div className="flex justify-center items-center flex-col min-h-[85vh]">
-                <DotLottieReact
-                  src="https://lottie.host/657f01c8-94c8-413a-9282-a0f38e263bb0/kikUFmWh08.lottie"
-                  loop
-                  autoplay
-                  style={{ width: "70%", height: "70%" }}
-                />
-              </div>
-            )}
-            {!loading && !error && <ProjectList projects={filterProjects} />}
-          </main>
+      <main className="p-6 flex-1 pt-32">
+        {loading && (
+          <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center">
+            {" "}
+            <Loading />{" "}
+          </div>
+        )}
+        {error && (
+          <div className="flex justify-center items-center flex-col min-h-[85vh]">
+            <DotLottieReact
+              src="https://lottie.host/657f01c8-94c8-413a-9282-a0f38e263bb0/kikUFmWh08.lottie"
+              loop
+              autoplay
+              style={{ width: "70%", height: "70%" }}
+            />
+          </div>
+        )}
+        {!loading && !error && <ProjectList projects={filterProjects} />}
+      </main>
 
-          {/* Footer */}
-        </div>
-      </div>
+      {/* Footer */}
       <footer>
         <GeneralFooter />
       </footer>
-    </>
+    </div>
   );
 }

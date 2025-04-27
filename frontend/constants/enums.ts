@@ -1,0 +1,135 @@
+export enum ToolCategory {
+  // IDEs e Editores de Código
+  JETBRAINS = "JetBrains",
+  SUBLIME_TEXT = "Sublime Text",
+  VS_CODE = "VS Code",
+  VIM = "Vim / Neovim",
+
+  // Controle de Versão
+  BITBUCKET = "Bitbucket",
+  GIT = "Git",
+  GITHUB = "GitHub",
+  GITLAB = "GitLab",
+
+  // Stacks de Desenvolvimento Web
+  // Frontend
+  ANGULAR = "Angular",
+  BABEL = "Babel",
+  BOOTSTRAP = "Bootstrap",
+  CSS = "CSS",
+  HTML = "HTML",
+  JAVASCRIPT = "JavaScript",
+  MATERIAL_UI = "Material UI",
+  REACT = "React.js",
+  REDUX = "Redux",
+  RECOIL = "Recoil",
+  SVELTE = "Svelte",
+  TAILWIND_CSS = "Tailwind CSS",
+  TYPESCRIPT = "TypeScript",
+  VITE = "Vite",
+  VUE = "Vue.js",
+  WEBPACK = "Webpack",
+  ZUSTAND = "Zustand",
+
+  // Backend
+  C_SHARP_ASPNET = "C# (ASP.NET)",
+  GO = "Go",
+  GRAPHQL = "GraphQL",
+  JAVA_SPRING_BOOT = "Java (Spring Boot)",
+  NODE_JS = "JavaScript (Node.js)",
+  PHP_LARAVEL = "PHP (Laravel)",
+  PHP_SYMFONY = "PHP (Symfony)",
+  PYTHON_DJANGO = "Python (Django)",
+  PYTHON_FASTAPI = "Python (FastAPI)",
+  PYTHON_FLASK = "Python (Flask)",
+  REST = "REST",
+  RUBY_RAILS = "Ruby (Rails)",
+  RUST = "Rust",
+  WEBSOCKET = "WebSocket",
+
+  // Inteligência Artificial & Machine Learning
+  GOOGLE_COLAB = "Google Colab",
+  JUPYTER = "Jupyter",
+  NUMPY = "NumPy",
+  OPENCV = "OpenCV",
+  PANDAS = "Pandas",
+  PYTHON = "Python",
+  PYTORCH = "PyTorch",
+  SCIKIT_LEARN = "Scikit-Learn",
+  TENSORFLOW = "TensorFlow",
+  TRANSFORMERS = "Transformers",
+  WEIGHTS_BIAS = "Weights & Biases",
+
+  // Banco de Dados
+  NOSQL_CASSANDRA = "Cassandra",
+  NOSQL_FIREBASE = "Firebase",
+  NOSQL_MONGODB = "MongoDB",
+  NOSQL_REDIS = "Redis",
+  ORM_ENTITY_FRAMEWORK = "Entity Framework",
+  ORM_HIBERNATE = "Hibernate",
+  ORM_PRISMA = "Prisma",
+  ORM_SEQUELIZE = "Sequelize",
+  ORM_SQLALCHEMY = "SQLAlchemy",
+  SQL_MYSQL = "MySQL",
+  SQL_POSTGRESQL = "PostgreSQL",
+  SQL_SERVER = "Microsoft SQL Server",
+  SQL_SQLITE = "SQLite",
+
+  // Infraestrutura & DevOps
+  ANSIBLE = "Ansible",
+  AWS = "AWS",
+  CI_CD_CIRCLECI = "CircleCI",
+  CI_CD_GITHUB_ACTIONS = "GitHub Actions",
+  CI_CD_GITLAB_CI = "GitLab CI",
+  DOCKER = "Docker",
+  GOOGLE_CLOUD = "Google Cloud",
+  KUBERNETES = "Kubernetes",
+  NETLIFY = "Netlify",
+  TERRAFORM = "Terraform",
+  VERCEL = "Vercel",
+  AZURE = "Azure",
+
+  // Desenvolvimento Mobile
+  FLUTTER = "Flutter (Dart)",
+  IONIC = "Ionic",
+  KOTLIN_ANDROID = "Kotlin (Android)",
+  REACT_NATIVE = "React Native",
+  SWIFT = "Swift (iOS)",
+  XAMARIN = "Xamarin",
+
+  // Desenvolvimento Desktop
+  DOTNET = ".NET",
+  ELECTRON = "Electron",
+  JAVA_FX = "JavaFX",
+  QT = "Qt",
+  TAURI = "Tauri",
+
+  // Testes
+  TEST_CYPRESS = "Cypress",
+  TEST_JEST = "Jest",
+  TEST_JUNIT = "JUnit",
+  TEST_MOCHA_CHAI = "Mocha + Chai",
+  TEST_NUNIT = "NUnit",
+  TEST_PLAYWRIGHT = "Playwright",
+  TEST_PYTEST = "Pytest",
+  TEST_SELENIUM = "Selenium",
+
+  // Segurança & Autenticação
+  AUTH0 = "Auth0",
+  FIREBASE_AUTH = "Firebase Auth",
+  JWT = "JWT",
+  OAUTH2 = "OAuth2",
+  OWASP_TOP_10 = "OWASP Top 10",
+
+  // Gerenciadores de Pacotes
+  CARGO = "cargo",
+  COMPOSER = "Composer",
+  CONDA = "conda",
+  GRADLE = "Gradle",
+  MAVEN = "Maven",
+  NPM = "npm",
+  PNPM = "pnpm",
+  POETRY = "poetry",
+  PIP = "pip",
+  YARN = "yarn",
+}
